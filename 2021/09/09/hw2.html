@@ -4,9 +4,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Finding the first 10-digit prime in the decimal expansion of 17*pi | BIOSTAT 823 Blog</title>
+<title>Finding the first 10-digit prime in the decimal expansion of 17pi | BIOSTAT 823 Blog</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Finding the first 10-digit prime in the decimal expansion of 17*pi" />
+<meta property="og:title" content="Finding the first 10-digit prime in the decimal expansion of 17pi" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This blog will document all of the homework assignments and final project for BIOSTAT 823." />
 <meta property="og:description" content="This blog will document all of the homework assignments and final project for BIOSTAT 823." />
@@ -16,7 +16,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-09-09T00:00:00-05:00" />
 <script type="application/ld+json">
-{"url":"https://smurphy567.github.io/BIOSTAT823/2021/09/09/hw2.html","@type":"BlogPosting","headline":"Finding the first 10-digit prime in the decimal expansion of 17*pi","dateModified":"2021-09-09T00:00:00-05:00","datePublished":"2021-09-09T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://smurphy567.github.io/BIOSTAT823/2021/09/09/hw2.html"},"description":"This blog will document all of the homework assignments and final project for BIOSTAT 823.","@context":"https://schema.org"}</script>
+{"url":"https://smurphy567.github.io/BIOSTAT823/2021/09/09/hw2.html","@type":"BlogPosting","headline":"Finding the first 10-digit prime in the decimal expansion of 17pi","dateModified":"2021-09-09T00:00:00-05:00","datePublished":"2021-09-09T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://smurphy567.github.io/BIOSTAT823/2021/09/09/hw2.html"},"description":"This blog will document all of the homework assignments and final project for BIOSTAT 823.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/BIOSTAT823/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://smurphy567.github.io/BIOSTAT823/feed.xml" title="BIOSTAT 823 Blog" /><link rel="shortcut icon" type="image/x-icon" href="/BIOSTAT823/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -87,13 +87,13 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Finding the first 10-digit prime in the decimal expansion of 17*pi</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-09T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Finding the first 10-digit prime in the decimal expansion of 17pi</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-09T00:00:00-05:00" itemprop="datePublished">
         Sep 9, 2021
       </time>
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -133,6 +133,261 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Three steps are recommended by Dr. Cliburn Chan to break down this problem.</p>
+<ol>
+<li>Write a function to generate an expansion of $\pi$.</li>
+<li>Write a function to identify if a number is prime.</li>
+<li>Write a function to generate sliding windows of a specified width from a long string of numbers.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step-1">Step 1<a class="anchor-link" href="#Step-1"> </a></h2><p>Generate an expansion of $\pi$.  I did this using the mpmath package.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">mpmath</span> <span class="kn">import</span> <span class="n">mp</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate the decimal expansion of pi out to n decimal places&quot;&quot;&quot;</span>
+    
+    <span class="n">mp</span><span class="o">.</span><span class="n">dps</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">expansion</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">pi</span>
+    
+    <span class="k">return</span> <span class="n">expansion</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">expand</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step-2">Step 2<a class="anchor-link" href="#Step-2"> </a></h2><p>Create a function to identify if a given integer is prime.</p>
+<p>Using a simple for loop, I checked if a value, val, was divisible by any integer.  I first checked if val was even.  If not, I then check odd integers from 3 to $\sqrt{val} + 1$.  The given value could not be divisible by anything larger than this upper bound except for itself, which is assumed.  The break function is used to stop the for loop from running after a number is shown to be not prime.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">prime_num</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Identify a prime (True) or not prime (False) integer.&quot;&quot;&quot;</span>
+    
+    <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1">#prime until proven otherwise</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">val</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#check if val is even</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="kc">False</span>
+        
+    <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span> <span class="c1">#if not even, check if divisible by other values</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">val</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">val</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">status</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">break</span>
+    
+    <span class="k">return</span> <span class="n">status</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prime_num</span><span class="p">(</span><span class="mi">10000087</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step-3">Step 3<a class="anchor-link" href="#Step-3"> </a></h2><p>Create a function to generate sliding windows of a specified width within a string.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sliding</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate sliding windows of length &#39;width&#39; within a string.&quot;&quot;&quot;</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">-</span> <span class="n">width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="p">[</span><span class="n">string</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">width</span><span class="p">]]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sliding</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;abcdefghijklmnop&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Combine-all-three-functions-to-generate-the-first-17-digit-prime-number-in-the-decimal-expansion-of-$\pi$.">Combine all three functions to generate the first 17 digit prime number in the decimal expansion of $\pi$.<a class="anchor-link" href="#Combine-all-three-functions-to-generate-the-first-17-digit-prime-number-in-the-decimal-expansion-of-$\pi$."> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I decided to try the first thirty decimal places in pi and check if the first 17-digit prime lies within those digits.</p>
+<p>Within the sliding function, now called sliding2, I removed the first two values in the pi string, which are '3.' before calling the prime number identification function, prime_num.  The break function is once again used, this time it will stop the for loop when a prime number is found (because we are only searching for the first prime).</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sliding2</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate sliding windows of length &#39;width&#39; within a string.&quot;&quot;&quot;</span>
+    
+    <span class="n">stat</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">-</span> <span class="n">width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">string</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">width</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">prime_num</span><span class="p">(</span><span class="n">window</span><span class="p">):</span>
+            <span class="n">stat</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="s2">&quot;is the first&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="s2">&quot;-digit prime in the decimal expansion of pi.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This sequence can be found starting at the&quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;th decimal place.&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sliding2</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">expand</span><span class="p">(</span><span class="mi">30</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
 </div>
 
 
