@@ -111,7 +111,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      5 min read
+      6 min read
     
 </span></p>
 
@@ -696,6 +696,9 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">deaths</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;malaria-deaths-by-region.csv&#39;</span><span class="p">)</span>
 <span class="n">deaths</span> <span class="o">=</span> <span class="n">deaths</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Deaths - Malaria - Sex: Both - Age: All Ages (Number)&quot;</span><span class="p">:</span> <span class="s2">&quot;Deaths&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deaths</span><span class="p">))</span>
+<span class="n">deaths</span> <span class="o">=</span> <span class="n">deaths</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">deaths</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">deaths</span><span class="o">.</span><span class="n">Entity</span> <span class="o">==</span> <span class="s2">&quot;World&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deaths</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -707,73 +710,11 @@ window.onload = wrap_img;
 
 <div class="output_area">
 
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Entity</th>
-      <th>Code</th>
-      <th>Year</th>
-      <th>Deaths</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>5621</th>
-      <td>Syria</td>
-      <td>SYR</td>
-      <td>2011</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>5746</th>
-      <td>Timor</td>
-      <td>TLS</td>
-      <td>1996</td>
-      <td>2.618739</td>
-    </tr>
-    <tr>
-      <th>4055</th>
-      <td>Nicaragua</td>
-      <td>NIC</td>
-      <td>2013</td>
-      <td>2.434741</td>
-    </tr>
-    <tr>
-      <th>652</th>
-      <td>Bhutan</td>
-      <td>BTN</td>
-      <td>1998</td>
-      <td>46.853076</td>
-    </tr>
-    <tr>
-      <th>1778</th>
-      <td>Ecuador</td>
-      <td>ECU</td>
-      <td>2004</td>
-      <td>15.172327</td>
-    </tr>
-  </tbody>
-</table>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>6468
+6440
+</pre>
 </div>
-</div>
-
 </div>
 
 </div>
@@ -1230,6 +1171,70 @@ if (outputEl) {{
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">coor</span> <span class="o">=</span> <span class="n">coor</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;World&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+
+<span class="ansi-red-fg">KeyError</span>Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-84-72f0f5f5cd4c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>coor <span class="ansi-blue-fg">=</span> coor<span class="ansi-blue-fg">.</span>drop<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;World&#39;</span><span class="ansi-blue-fg">,</span> axis <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">/opt/conda/lib/python3.7/site-packages/pandas/core/frame.py</span> in <span class="ansi-cyan-fg">drop</span><span class="ansi-blue-fg">(self, labels, axis, index, columns, level, inplace, errors)</span>
+<span class="ansi-green-intense-fg ansi-bold">   4162</span>             level<span class="ansi-blue-fg">=</span>level<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   4163</span>             inplace<span class="ansi-blue-fg">=</span>inplace<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg">-&gt; 4164</span><span class="ansi-red-fg">             </span>errors<span class="ansi-blue-fg">=</span>errors<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   4165</span>         )
+<span class="ansi-green-intense-fg ansi-bold">   4166</span> 
+
+<span class="ansi-green-fg">/opt/conda/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ansi-cyan-fg">drop</span><span class="ansi-blue-fg">(self, labels, axis, index, columns, level, inplace, errors)</span>
+<span class="ansi-green-intense-fg ansi-bold">   3876</span>         <span class="ansi-green-fg">for</span> axis<span class="ansi-blue-fg">,</span> labels <span class="ansi-green-fg">in</span> axes<span class="ansi-blue-fg">.</span>items<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   3877</span>             <span class="ansi-green-fg">if</span> labels <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 3878</span><span class="ansi-red-fg">                 </span>obj <span class="ansi-blue-fg">=</span> obj<span class="ansi-blue-fg">.</span>_drop_axis<span class="ansi-blue-fg">(</span>labels<span class="ansi-blue-fg">,</span> axis<span class="ansi-blue-fg">,</span> level<span class="ansi-blue-fg">=</span>level<span class="ansi-blue-fg">,</span> errors<span class="ansi-blue-fg">=</span>errors<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   3879</span> 
+<span class="ansi-green-intense-fg ansi-bold">   3880</span>         <span class="ansi-green-fg">if</span> inplace<span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">/opt/conda/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ansi-cyan-fg">_drop_axis</span><span class="ansi-blue-fg">(self, labels, axis, level, errors)</span>
+<span class="ansi-green-intense-fg ansi-bold">   3910</span>                 new_axis <span class="ansi-blue-fg">=</span> axis<span class="ansi-blue-fg">.</span>drop<span class="ansi-blue-fg">(</span>labels<span class="ansi-blue-fg">,</span> level<span class="ansi-blue-fg">=</span>level<span class="ansi-blue-fg">,</span> errors<span class="ansi-blue-fg">=</span>errors<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   3911</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 3912</span><span class="ansi-red-fg">                 </span>new_axis <span class="ansi-blue-fg">=</span> axis<span class="ansi-blue-fg">.</span>drop<span class="ansi-blue-fg">(</span>labels<span class="ansi-blue-fg">,</span> errors<span class="ansi-blue-fg">=</span>errors<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   3913</span>             result <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>reindex<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">**</span><span class="ansi-blue-fg">{</span>axis_name<span class="ansi-blue-fg">:</span> new_axis<span class="ansi-blue-fg">}</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   3914</span> 
+
+<span class="ansi-green-fg">/opt/conda/lib/python3.7/site-packages/pandas/core/indexes/base.py</span> in <span class="ansi-cyan-fg">drop</span><span class="ansi-blue-fg">(self, labels, errors)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5274</span>         <span class="ansi-green-fg">if</span> mask<span class="ansi-blue-fg">.</span>any<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   5275</span>             <span class="ansi-green-fg">if</span> errors <span class="ansi-blue-fg">!=</span> <span class="ansi-blue-fg">&#34;ignore&#34;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 5276</span><span class="ansi-red-fg">                 </span><span class="ansi-green-fg">raise</span> KeyError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">f&#34;{labels[mask]} not found in axis&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5277</span>             indexer <span class="ansi-blue-fg">=</span> indexer<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">~</span>mask<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">   5278</span>         <span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>delete<span class="ansi-blue-fg">(</span>indexer<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">KeyError</span>: &#34;[&#39;World&#39;] not found in axis&#34;</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gapminder</span><span class="p">()</span>
 <span class="n">fig3</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_geo</span><span class="p">(</span><span class="n">coor</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="n">hover_name</span><span class="o">=</span><span class="s2">&quot;Entity&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="s2">&quot;Deaths&quot;</span><span class="p">,</span>
                <span class="n">animation_frame</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;natural earth&quot;</span><span class="p">)</span>
@@ -1292,143 +1297,6 @@ if (outputEl) {{
                 });
             </script>
         </div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">coor</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>Entity</th>
-      <th>Deaths</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>33.7680065</td>
-      <td>66.2385139</td>
-      <td>Afghanistan</td>
-      <td>463.612423</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>33.7680065</td>
-      <td>66.2385139</td>
-      <td>Afghanistan</td>
-      <td>487.191614</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>33.7680065</td>
-      <td>66.2385139</td>
-      <td>Afghanistan</td>
-      <td>521.714216</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>33.7680065</td>
-      <td>66.2385139</td>
-      <td>Afghanistan</td>
-      <td>675.657696</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>33.7680065</td>
-      <td>66.2385139</td>
-      <td>Afghanistan</td>
-      <td>782.445339</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1566</th>
-      <td>-2.9814344</td>
-      <td>23.8222636</td>
-      <td>Democratic Republic of Congo</td>
-      <td>81622.267994</td>
-    </tr>
-    <tr>
-      <th>1567</th>
-      <td>-2.9814344</td>
-      <td>23.8222636</td>
-      <td>Democratic Republic of Congo</td>
-      <td>81226.476656</td>
-    </tr>
-    <tr>
-      <th>1568</th>
-      <td>55.670249</td>
-      <td>10.3333283</td>
-      <td>Denmark</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>1569</th>
-      <td>55.670249</td>
-      <td>10.3333283</td>
-      <td>Denmark</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>1570</th>
-      <td>55.670249</td>
-      <td>10.3333283</td>
-      <td>Denmark</td>
-      <td>0.000000</td>
-    </tr>
-  </tbody>
-</table>
-<p>1347 rows × 4 columns</p>
-</div>
 </div>
 
 </div>
