@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Is there life after graduate school? | BIOSTAT 823 Blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Is there life after graduate school?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An introduction to Dash with applications to doctoral degree recipients’ job outlook." />
+<meta property="og:description" content="An introduction to Dash with applications to doctoral degree recipients’ job outlook." />
+<link rel="canonical" href="https://smurphy567.github.io/BIOSTAT823/fastpages/jupyter/2021/09/11/hw4.html" />
+<meta property="og:url" content="https://smurphy567.github.io/BIOSTAT823/fastpages/jupyter/2021/09/11/hw4.html" />
+<meta property="og:site_name" content="BIOSTAT 823 Blog" />
+<meta property="og:image" content="https://smurphy567.github.io/BIOSTAT823/images/some_folder/your_image.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-11T00:00:00-05:00" />
+<script type="application/ld+json">
+{"url":"https://smurphy567.github.io/BIOSTAT823/fastpages/jupyter/2021/09/11/hw4.html","@type":"BlogPosting","headline":"Is there life after graduate school?","dateModified":"2021-09-11T00:00:00-05:00","datePublished":"2021-09-11T00:00:00-05:00","image":"https://smurphy567.github.io/BIOSTAT823/images/some_folder/your_image.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://smurphy567.github.io/BIOSTAT823/fastpages/jupyter/2021/09/11/hw4.html"},"description":"An introduction to Dash with applications to doctoral degree recipients’ job outlook.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/BIOSTAT823/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://smurphy567.github.io/BIOSTAT823/feed.xml" title="BIOSTAT 823 Blog" /><link rel="shortcut icon" type="image/x-icon" href="/BIOSTAT823/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.js"></script>
+<script type="text/javascript">
+  if (typeof require !== 'undefined') {
+      require.undef("plotly");
+      requirejs.config({
+          paths: {
+              'plotly': ['https://cdn.plot.ly/plotly-latest.min']
+          }
+      });
+      require(['plotly'], function(Plotly) {
+          window._Plotly = Plotly;
+      });
+  }
+</script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/BIOSTAT823/">BIOSTAT 823 Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/BIOSTAT823/about/">About Me</a><a class="page-link" href="/BIOSTAT823/search/">Search</a><a class="page-link" href="/BIOSTAT823/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Is there life after graduate school?</h1><p class="page-description">An introduction to Dash with applications to doctoral degree recipients' job outlook.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-11T00:00:00-05:00" itemprop="datePublished">
+        Sep 11, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/BIOSTAT823/categories/#fastpages">fastpages</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/BIOSTAT823/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/smurphy567/BIOSTAT823/tree/master/_notebooks/2021-09-11-hw4.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/BIOSTAT823/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/smurphy567/BIOSTAT823/master?filepath=_notebooks%2F2021-09-11-hw4.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/BIOSTAT823/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/smurphy567/BIOSTAT823/blob/master/_notebooks/2021-09-11-hw4.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/BIOSTAT823/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-09-11-hw4.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Dash (<a href="https://dash.plotly.com/introduction">https://dash.plotly.com/introduction</a>) is a Python package that allows for easy app creation.  It works with plotly, the package that was used in my last blog post, to allow for simple coding of interactive visualizations.  For this dashboard, data from the NSF on doctorate recipients in the United States was used (<a href="https://ncses.nsf.gov/pubs/nsf19301/data">https://ncses.nsf.gov/pubs/nsf19301/data</a>).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To get started, I downloaded Anaconda.  This allows me to run a local version of Python to get the app running.  Within Anaconda, I opened up Jupyter notebooks to code this dashboard.  After doing some standard data cleaning using the pandas package, I began to write the code for the web page.  My webpage contains four images in a two-by-two grid with drop down menus for two and radio items for the other two to allow for customization of the graphs and easier interpretation.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To create the layout, dash bootstrap components were used (Read more about dash bootstrap location components here: <a href="https://dash-bootstrap-components.opensource.faculty.ai/docs/components/layout/">https://dash-bootstrap-components.opensource.faculty.ai/docs/components/layout/</a>).  This package allows for the specification of size and location of each feature of the dashboard.  Rows must be specified first, and columns can be specified within each row.</p>
+<p>Within the row and column commands, html (Read more about html components here: <a href="https://dash.plotly.com/dash-html-components">https://dash.plotly.com/dash-html-components</a>.  I only used Div, H1, and H2.) and dash core components (Read more about core components here: <a href="https://dash.plotly.com/dash-core-components">https://dash.plotly.com/dash-core-components</a>.) were used to include text, graphs, dropdowns, and radio items.  I used html components to include text headers; H1 is called for the largest header, and H2 is called for the next largest header.  From dcc, dash core components, I created by interactive plots.</p>
+<p>To allow for interaction between the dropdowns and radio items and their corresponding plots, an app callback must be used.  This callback takes inputs from each dropdown and radio item and it outputs the appropriate plots.  Within the callback is where I utilized the plotly express code.</p>
+<p>The code is included below.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span><span class="n">external_stylesheets</span><span class="o">=</span><span class="p">[</span><span class="n">dbc</span><span class="o">.</span><span class="n">themes</span><span class="o">.</span><span class="n">BOOTSTRAP</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+
+<span class="ansi-red-fg">NameError</span>Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-9cf0f232f611&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>app <span class="ansi-blue-fg">=</span> dash<span class="ansi-blue-fg">.</span>Dash<span class="ansi-blue-fg">(</span>__name__<span class="ansi-blue-fg">,</span>external_stylesheets<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span>dbc<span class="ansi-blue-fg">.</span>themes<span class="ansi-blue-fg">.</span>BOOTSTRAP<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;dash&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+    <span class="n">dbc</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+        <span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">H1</span><span class="p">(</span><span class="s2">&quot;Is there life after graduate school?&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;text-align&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">})</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+    
+    <span class="n">dbc</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+        <span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">H2</span><span class="p">(</span><span class="s2">&quot;What percentage of doctorate recipients have definite job commitments?&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;text-align&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">})</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+             
+    <span class="n">dbc</span><span class="o">.</span><span class="n">Row</span><span class="p">([</span>
+        <span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span><span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;field_graph&#39;</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">{}),</span>
+                <span class="n">width</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;order&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}),</span>
+    
+        <span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span><span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;dem_graph&#39;</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">{}),</span>
+                <span class="n">width</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;order&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+    <span class="p">]),</span>
+    
+    <span class="n">dbc</span><span class="o">.</span><span class="n">Row</span><span class="p">([</span>
+        <span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span><span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;fields&quot;</span><span class="p">,</span>
+                              <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+                                  <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;All fields&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s1">&#39;All fields&#39;</span><span class="p">},</span>
+                                  <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Life Sciences&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s1">&#39;Life sciences&#39;</span><span class="p">},</span>
+                                  <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Physical Sciences and Earth Sciences&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;Physical sciences and earth sciences&quot;</span><span class="p">},</span>
+                                  <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Mathematics and Computer Sciences&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Mathematics and computer sciences&quot;</span><span class="p">},</span>
+                                  <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Psychology and Social Sciences&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Psychology and social sciences&quot;</span><span class="p">},</span>
+                                  <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Engineering&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Engineering&quot;</span><span class="p">},</span>
+                                  <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Education&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Education&quot;</span><span class="p">},</span>
+                                  <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Humanities and Arts&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Humanities and arts&quot;</span><span class="p">},</span>
+                                  <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Other&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Other&quot;</span><span class="p">},</span>
+                              <span class="p">],</span>
+                              <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;All fields&#39;</span><span class="p">,</span>
+                                     <span class="s1">&#39;Life sciences&#39;</span><span class="p">,</span>
+                                    <span class="s2">&quot;Physical sciences and earth sciences&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;Mathematics and computer sciences&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;Psychology and social sciences&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;Engineering&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;Education&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;Humanities and arts&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;Other&quot;</span>
+                                   <span class="p">],</span>
+                             <span class="n">multi</span> <span class="o">=</span> <span class="kc">True</span>
+                             <span class="p">),</span>
+                <span class="n">width</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;order&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+               <span class="p">),</span>
+        
+        <span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span><span class="n">dcc</span><span class="o">.</span><span class="n">RadioItems</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;dem&quot;</span><span class="p">,</span>
+                               <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+                                   <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Sex   &quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s1">&#39;sex&#39;</span><span class="p">},</span>
+                                   <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Race   &quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s1">&#39;race&#39;</span><span class="p">},</span>
+                                   <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Immigration Status&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;cit&quot;</span><span class="p">}],</span>
+                               <span class="n">value</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span>
+                               <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;text-align&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">}</span>
+                              <span class="p">)</span>
+                <span class="p">,</span>
+                <span class="n">width</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;order&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+               <span class="p">)</span>
+    <span class="p">]),</span>
+    
+    <span class="n">dbc</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+        <span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">H2</span><span class="p">(</span><span class="s2">&quot;Where do doctorate recipients have definite job commitments?&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;text-align&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">})</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+        
+    <span class="n">dbc</span><span class="o">.</span><span class="n">Row</span><span class="p">([</span>
+        <span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span><span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;job_graph&#39;</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">{}),</span>
+               <span class="n">width</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;order&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}),</span>
+        <span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span><span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;dem2_graph&#39;</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">{}),</span>
+               <span class="n">width</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;order&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}),</span>
+        
+    <span class="p">]),</span>
+    
+    <span class="n">dbc</span><span class="o">.</span><span class="n">Row</span><span class="p">([</span>
+        <span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span><span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
+                 <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+                     <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;All fields&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s1">&#39;Total&#39;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Life Sciences&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s1">&#39;Life sciences&#39;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Physical Sciences and Earth Sciences&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;Physical sciences and earth sciences&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Mathematics and Computer Sciences&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Mathematics and computer sciences&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Psychology and Social Sciences&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Psychology and social sciences&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Engineering&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Engineering&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Education&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Education&quot;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Humanities and Arts&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Humanities and arts&quot;</span><span class="p">}],</span>
+                 <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Total&#39;</span><span class="p">,</span>
+                 <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;text-align&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">}</span>
+                 <span class="p">)),</span>
+        
+        <span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span><span class="n">dcc</span><span class="o">.</span><span class="n">RadioItems</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;dem2&quot;</span><span class="p">,</span>
+                               <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+                                   <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Male   &quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s1">&#39;Male&#39;</span><span class="p">},</span>
+                                   <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Female   &quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s1">&#39;Female&#39;</span><span class="p">}],</span>
+                               <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span>
+                               <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;text-align&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">}</span>
+                              <span class="p">)</span>
+                <span class="p">,</span>
+                <span class="n">width</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;order&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+               <span class="p">)</span>
+    <span class="p">]),</span>
+    
+
+<span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">Output</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="s1">&#39;field_graph&#39;</span><span class="p">,</span> <span class="n">component_property</span><span class="o">=</span><span class="s1">&#39;figure&#39;</span><span class="p">),</span>
+     <span class="n">Output</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="s1">&#39;dem_graph&#39;</span><span class="p">,</span> <span class="n">component_property</span><span class="o">=</span><span class="s1">&#39;figure&#39;</span><span class="p">),</span>
+    <span class="n">Output</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="s1">&#39;job_graph&#39;</span><span class="p">,</span> <span class="n">component_property</span><span class="o">=</span><span class="s1">&#39;figure&#39;</span><span class="p">),</span>
+    <span class="n">Output</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="s1">&#39;dem2_graph&#39;</span><span class="p">,</span> <span class="n">component_property</span><span class="o">=</span><span class="s1">&#39;figure&#39;</span><span class="p">)],</span>
+    <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="s1">&#39;fields&#39;</span><span class="p">,</span> <span class="n">component_property</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">),</span>
+     <span class="n">Input</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="s1">&#39;dem&#39;</span><span class="p">,</span> <span class="n">component_property</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">),</span>
+    <span class="n">Input</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="s1">&#39;job&#39;</span><span class="p">,</span> <span class="n">component_property</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">),</span>
+    <span class="n">Input</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="s1">&#39;dem2&#39;</span><span class="p">,</span> <span class="n">component_property</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)]</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">update_graph</span><span class="p">(</span><span class="n">optf</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">optf2</span><span class="p">,</span> <span class="n">opt2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Update graphs based on checklist and radio items.&quot;&quot;&quot;</span>
+    
+    <span class="n">df_field</span> <span class="o">=</span> <span class="n">byfield_long</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_field</span> <span class="o">=</span> <span class="n">df_field</span><span class="p">[</span><span class="n">df_field</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">optf</span><span class="p">)]</span>
+    
+    <span class="n">df_job</span> <span class="o">=</span> <span class="n">ebf2_long</span><span class="p">[</span><span class="n">ebf2_long</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">optf2</span><span class="p">]</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">bycat_long</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">opt</span> <span class="o">==</span> <span class="s1">&#39;sex&#39;</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="s1">&#39;Female&#39;</span><span class="p">])]</span>
+    <span class="k">elif</span> <span class="n">opt</span> <span class="o">==</span> <span class="s1">&#39;race&#39;</span><span class="p">:</span> 
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Hispanic or Latino&#39;</span><span class="p">,</span>
+                                             <span class="s1">&#39;American Indian or Alaska Native&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;Black or African American&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;White&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;More than one race&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;Other race or race not reported&#39;</span><span class="p">])]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;U.S. citizen or permanent resident&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;Temporary visa holder&quot;</span><span class="p">])]</span>
+        
+    <span class="n">df2</span> <span class="o">=</span> <span class="n">ebd2_long</span><span class="p">[</span><span class="n">ebd2_long</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">opt2</span><span class="p">]</span>
+
+        
+    <span class="c1"># Plotly Express</span>
+    <span class="n">figfield</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span>
+        <span class="n">df_field</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;variable&#39;</span><span class="p">,</span> 
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="s1">&#39;Percent with Definite Commitment&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;variable&#39;</span><span class="p">:</span><span class="s1">&#39;Field&#39;</span><span class="p">},</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;By Field&quot;</span>
+    <span class="p">)</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;variable&#39;</span><span class="p">,</span> 
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="s1">&#39;Percent with Definite Commitment&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;variable&#39;</span><span class="p">:</span><span class="s1">&#39;Demographic&#39;</span><span class="p">},</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;By Demographic: Sex, Race, or Immigration Status&quot;</span>
+    <span class="p">)</span>
+    
+    <span class="n">figjob</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">df_job</span><span class="p">,</span> 
+                <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+              <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;job&quot;</span><span class="p">,</span>
+              <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;By Field&quot;</span>
+                    <span class="p">)</span>
+    
+    <span class="n">fig2</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> 
+                <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+              <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;job&quot;</span><span class="p">,</span>
+              <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;By Sex: Male or Female&quot;</span>
+                    <span class="p">)</span>
+  
+    <span class="k">return</span> <span class="n">figfield</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">figjob</span><span class="p">,</span> <span class="n">fig2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span> 
+    <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The plots look at the data on definite job commitments for doctoral degree recipients in the United States by field of study and various demographic categories.  By field, Humanities and Arts have the lowest percentage of definite job commitments.</p>
+<p>Additionally, males have a higher percent commitment by about 2% every year measured than females and a similar difference is seen in US citizens having a higher percent commitment than visa holders.  After 2002, the overall percentage with definite job commitments decreased until 2012.  This could be due to the recession or many other factors.</p>
+<p>It's clear in the area plots on the bottom of the dashboard that the most common area of employment of doctoral degree recipients is academia.  There is a large difference of type of job commitment between fields, with fields like physical/earth science and engineering having a large percentage going into industry or business.  Other fields such as humanities and arts and education have a larger percentage going into academia.</p>
+<p>There are sex differences observed in job sector, with women more likely to enter academia than men and men entering industry of business more than women.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you run the Jupyter file through Anaconda on your local machine, the dashboard can be seen at this link: <a href="http://127.0.0.1:8050/">http://127.0.0.1:8050/</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, is there life after graduate school?  Take a look for yourself at your field of study and other identifiers to see what the trends have been in the past.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="smurphy567/BIOSTAT823"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/BIOSTAT823/fastpages/jupyter/2021/09/11/hw4.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/BIOSTAT823/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/BIOSTAT823/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/BIOSTAT823/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>This blog will document all of the homework assignments and final project for BIOSTAT 823.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/BIOSTAT823/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/BIOSTAT823/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
