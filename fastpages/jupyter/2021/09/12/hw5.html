@@ -117,7 +117,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      5 min read
+      6 min read
     
 </span></p>
 
@@ -851,6 +851,22 @@ n===t._wrapperState.initialValue&amp;&amp;(e.value=n)}});t.exports=l},function(t
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The first column contains the actual image.  Second column contains the faded image with SHAP values corresponding to the beetle category.  Third column corresponds to cockroach.  Fourth column corresponds to dragonfly.</p>
 <p>Negative SHAP values, depicted with blue highlight in the above image, mean the pixel has a negative impact on prediction, meaning the image is likely not part of the category being checked.  Positive SHAP values, depicted with red highlight in the above image, mean the pixel has a positive impact on prediction, meaning that part of the image appears to fit the category checked.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The shap values shown in the figure above suggest that the model actually relied most heavily on the bottom right corner of the images to classify the insects.  Upon further inspection, it can be seen that every image has a label with letters and numbers or just number in that corner.  The neural network picked up on those numbers and realized that was the easiest way to distinguish between groups.  Had those labels been cropped out of the images, this figure would look completely different.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is a great example of how machine learning algorithms can pick up on unexpected details that otherwise wouldn't have been noticed by the researcher.  In this case, it ended up addressing something that may not be relevant to the question of how to classify insects.  However, it did find a solution relevant to the given images.</p>
 
 </div>
 </div>
