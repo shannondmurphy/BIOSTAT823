@@ -1,22 +1,13 @@
 {
   
     
-        "post0": {
-            "title": " Deep learning classification of bugs ",
-            "content": "",
-            "url": "https://smurphy567.github.io/BIOSTAT823/2021/09/12/hw5.html",
-            "relUrl": "/2021/09/12/hw5.html",
-            "date": " • Sep 12, 2021"
-        }
-        
-    
   
     
   
     
   
     
-        ,"post3": {
+        "post3": {
             "title": "Finding the first 10-digit prime in the decimal expansion of 17pi",
             "content": "Three steps are recommended by Dr. Cliburn Chan to break down this problem. . Write a function to generate an expansion of $ pi$. | Write a function to identify if a number is prime. | Write a function to generate sliding windows of a specified width from a long string of numbers. | Step 1 . Generate an expansion of $ pi$. I did this using the mpmath package. . from decimal import * from mpmath import mp . def expand(n): &quot;&quot;&quot;Generate the decimal expansion of pi out to n decimal places&quot;&quot;&quot; mp.dps = n + 1 expansion = mp.pi return expansion . print(expand(10)) . 3.1415926536 . Step 2 . Create a function to identify if a given integer is prime. . Using a simple for loop, I checked if a value, val, was divisible by any integer. I first checked if val was even. If not, I then check odd integers from 3 to $ sqrt{val} + 1$. The given value could not be divisible by anything larger than this upper bound except for itself, which is assumed. The break function is used to stop the for loop from running after a number is shown to be not prime. . import math . def prime_num(val): &quot;&quot;&quot;Identify a prime (True) or not prime (False) integer.&quot;&quot;&quot; status = True #prime until proven otherwise if (val % 2) == 0: #check if val is even status = False if status == True: #if not even, check if divisible by other values for i in range(3,int(math.sqrt(val)) + 1, 2): if (val % i) == 0: status = False break return status . print(prime_num(10000087)) . False . Step 3 . Create a function to generate sliding windows of a specified width within a string. . def sliding(width, string): &quot;&quot;&quot;Generate sliding windows of length &#39;width&#39; within a string.&quot;&quot;&quot; for i in range(0,len(string) - width + 1): window = [string[i:i+width]] print(window) . sliding(10, &quot;abcdefghijklmnop&quot;) . [&#39;abcdefghij&#39;] [&#39;bcdefghijk&#39;] [&#39;cdefghijkl&#39;] [&#39;defghijklm&#39;] [&#39;efghijklmn&#39;] [&#39;fghijklmno&#39;] [&#39;ghijklmnop&#39;] . Combine all three functions to generate the first 17 digit prime number in the decimal expansion of $ pi$. . I decided to try the first thirty decimal places in pi and check if the first 17-digit prime lies within those digits. . Within the sliding function, now called sliding2, I removed the first two values in the pi string, which are &#39;3.&#39; before calling the prime number identification function, prime_num. The break function is once again used, this time it will stop the for loop when a prime number is found (because we are only searching for the first prime). . def sliding2(width, string): &quot;&quot;&quot;Generate sliding windows of length &#39;width&#39; within a string.&quot;&quot;&quot; stat = 0 string = string[4:len(string)] for i in range(0,len(string) - width + 1): window = int(string[i:i+width]) if prime_num(window): stat = 1 print(window, &quot;is the first&quot;, width, &quot;-digit prime in the decimal expansion of pi.&quot;) print(&quot;This sequence can be found starting at the&quot;, i + 1, &quot;th decimal place.&quot;) break . sliding2(10, str(17*expand(30))) . 8649375157 is the first 10 -digit prime in the decimal expansion of pi. This sequence can be found starting at the 18 th decimal place. . The first 10-digit prime number in the decimal expansion of 17$ pi$ is 8649375157, and this sequence can be found starting at the 18th decimal place. .",
             "url": "https://smurphy567.github.io/BIOSTAT823/2021/09/09/hw2.html",
